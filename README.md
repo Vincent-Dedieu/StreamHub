@@ -14,4 +14,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Tools/Features :
 
-Clerk for authentication
+- Tailwind + shadcn/ui
+- Clerk for authentication
