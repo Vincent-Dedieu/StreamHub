@@ -15,7 +15,7 @@ const Search = () => {
     e.preventDefault();
     if (!value) return;
 
-    const url = qs.stringifyUrl({ url: "/", query: { q: value } }, { skipEmptyString: true });
+    const url = qs.stringifyUrl({ url: "/search", query: { q: value } }, { skipEmptyString: true });
     router.push(url);
   };
 
