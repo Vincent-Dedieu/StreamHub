@@ -1,3 +1,5 @@
+//fix the hydration caused by ssr
+
 "use client";
 
 import { useSidebar } from "@/store/use-sidebar";
@@ -5,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { ToggleSkeleton } from "./toggle";
 import { RecommandedSkeleton } from "./recommanded";
+import { FollowingSkeleton } from "./following";
 
 interface WrapperProps {
   children: React.ReactNode;
@@ -22,6 +25,7 @@ const Wrapper = ({ children }: WrapperProps) => {
     return (
       <aside className="fixed left-0 flex flex-col lg:w-60 h-full w-[70px] bg-background border-r border-[#2D2E35] z-50">
         <ToggleSkeleton />
+        <FollowingSkeleton />
         <RecommandedSkeleton />
       </aside>
     );

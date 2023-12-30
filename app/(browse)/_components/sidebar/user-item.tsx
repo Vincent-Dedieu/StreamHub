@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/store/use-sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
-import Link from "next/link";
 import { UserAvatar } from "@/components/user-avatar";
 import { LiveBadge } from "@/components/live-badge";
 
