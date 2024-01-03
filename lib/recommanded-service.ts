@@ -22,10 +22,18 @@ export const getRecommanded = async () => {
       })
     ).map((follow) => follow.followingId);
 
+    // Get the IDs of the users blocked by the current user
+    const blockedUsersIds = (
+      await db.block.findMany({
+        where: { blockerId: userId },
+        select: { blockedId: true },
+      })
+    ).map((block) => block.blockedId);
+
     // Use these IDs to exclude these users from the findMany query
     users = await db.user.findMany({
       where: {
-        AND: [{ id: { notIn: [userId, ...followedUserIds] } }],
+        AND: [{ id: { notIn: [userId, ...followedUserIds, ...blockedUsersIds] } }],
       },
       orderBy: {
         createdAt: "desc",
