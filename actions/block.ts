@@ -4,21 +4,17 @@ import { blockUser, unblockUser } from "@/lib/block-service";
 import { revalidatePath } from "next/cache";
 
 export const onBlock = async (id: string) => {
-  try {
-    //TODO : Adapt to disconnect from livestream
-    // TODO : Allow ability to kick the user(or guest) from the livestream
-    const blockedUser = await blockUser(id);
+  //TODO : Adapt to disconnect from livestream
+  // TODO : Allow ability to kick the user(or guest) from the livestream
+  const blockedUser = await blockUser(id);
 
-    revalidatePath("/");
+  revalidatePath("/");
 
-    if (blockedUser) {
-      revalidatePath(`/${blockedUser.blocked.username}`);
-    }
-
-    return blockedUser;
-  } catch (error) {
-    throw new Error("error");
+  if (blockedUser) {
+    revalidatePath(`/${blockedUser.blocked.username}`);
   }
+
+  return blockedUser;
 };
 
 export const onUnblock = async (id: string) => {
