@@ -13,9 +13,9 @@ datasource db {
 model User {
   id             String  @id @default(auto()) @map("_id") @db.ObjectId
   username       String  @unique
-  imageUrl       String  @db.String
+  imageUrl       String
   externalUserId String  @unique
-  bio            String? @db.String
+  bio            String?
 
   following  Follow[] @relation(name: "Following")
   followedBy Follow[] @relation(name: "FollowedBy")
@@ -23,8 +23,34 @@ model User {
   blocking  Block[] @relation(name: "Blocking")
   blockedBy Block[] @relation(name: "BlockedBy")
 
+  stream Stream? @relation(fields: [streamId], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  streamId  String?  @db.ObjectId
+}
+
+model Stream {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  thumbnailUrl String?
+
+  ingressId String? @unique
+  serverUrl String?
+  streamKey String?
+
+  isLive              Boolean @default(false)
+  isChatEnabled       Boolean @default(true)
+  isChatDelayed       Boolean @default(false)
+  isChatFollowersOnly Boolean @default(false)
+
+  userId String @db.ObjectId
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+
+  @@index([userId])
 }
 
 model Follow {
