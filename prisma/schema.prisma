@@ -34,7 +34,7 @@ model Stream {
   name         String
   thumbnailUrl String?
 
-  ingressId String? @unique
+  ingressId String? @db.ObjectId
   serverUrl String?
   streamKey String?
 
