@@ -23,7 +23,7 @@ export const NavItem = ({ label, icon: Icon, href, isActive }: NavItemProps) => 
       className={cn("w-full h-12", collapsed ? "justify-center" : "justify-start", isActive && "bg-accent")}
     >
       <Link href={href}>
-        <div className="flex items-center gap-x-4">
+        <div className="flex gap-x-4 items-center ">
           <Icon className="h-4 w-4" />
           {!collapsed && <span>{label}</span>}
         </div>
