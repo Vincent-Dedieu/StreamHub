@@ -3,12 +3,9 @@ import { CopyButton } from "./copy-button";
 
 interface UrlCardProps {
   value: string | null;
-  ingressId: string;
-  serverUrl: string;
-  streamKey: string;
 }
 
-export const UrlCard = ({ value, ingressId, serverUrl, streamKey }: UrlCardProps) => {
+export const UrlCard = ({ value }: UrlCardProps) => {
   return (
     <div className="rounded-xl bg-muted p-6">
       <div className="flex items-center gap-x-10">
