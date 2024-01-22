@@ -1,6 +1,5 @@
-"use server";
-
 //https://docs.livekit.io/egress-ingress/ingress/overview/
+"use server";
 
 import {
   IngressAudioEncodingPreset,
@@ -8,10 +7,11 @@ import {
   IngressClient,
   IngressVideoEncodingPreset,
   RoomServiceClient,
-  CreateIngressOptions,
+  type CreateIngressOptions,
 } from "livekit-server-sdk";
 
 import { TrackSource } from "livekit-server-sdk/dist/proto/livekit_models";
+
 import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
 import { revalidatePath } from "next/cache";
@@ -24,7 +24,7 @@ const roomService = new RoomServiceClient(
 
 const ingressClient = new IngressClient(process.env.LIVEKIT_API_URL!);
 
-export const resetIngress = async (hostIdentity: string) => {
+export const resetIngresses = async (hostIdentity: string) => {
   const ingresses = await ingressClient.listIngress({
     roomName: hostIdentity,
   });
@@ -45,7 +45,7 @@ export const resetIngress = async (hostIdentity: string) => {
 export const createIngress = async (ingressType: IngressInput) => {
   const self = await getSelf();
 
-  await resetIngress(self.id);
+  await resetIngresses(self.id);
 
   const options: CreateIngressOptions = {
     name: self.username,
@@ -61,7 +61,6 @@ export const createIngress = async (ingressType: IngressInput) => {
       source: TrackSource.CAMERA,
       preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
     };
-
     options.audio = {
       source: TrackSource.MICROPHONE,
       preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS,
