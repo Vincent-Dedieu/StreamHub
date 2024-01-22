@@ -1,4 +1,4 @@
-import getSelf from "./auth-service";
+import { getSelf } from "./auth-service";
 import { db } from "./db";
 
 export const isBlockedByUser = async (id: string) => {

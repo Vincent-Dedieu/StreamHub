@@ -13,7 +13,7 @@ import {
 
 import { TrackSource } from "livekit-server-sdk/dist/proto/livekit_models";
 import { db } from "@/lib/db";
-import getSelf from "@/lib/auth-service";
+import { getSelf } from "@/lib/auth-service";
 import { revalidatePath } from "next/cache";
 
 const roomService = new RoomServiceClient(

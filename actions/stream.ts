@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import getSelf from "@/lib/auth-service";
+import { getSelf } from "@/lib/auth-service";
 import { db } from "@/lib/db";
 import { Stream } from "@prisma/client";
 
