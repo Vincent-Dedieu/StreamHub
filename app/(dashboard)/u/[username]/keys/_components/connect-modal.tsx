@@ -27,8 +27,8 @@ export const ConnectModal = () => {
           toast.success("Ingress created");
           closeRef?.current?.click();
         })
-        .catch((err) => {
-          toast.error(err.message);
+        .catch(() => {
+          toast.error("Failed to create ingress, something went wrong");
         });
     });
   };
