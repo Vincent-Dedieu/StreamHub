@@ -13,7 +13,18 @@ export async function POST(req: Request) {
     throw new Error("Missing authorization header");
   }
 
-  const event = await receiver.receive(body, authorization);
+  const event = receiver.receive(body, authorization);
+
+  if (event.event === "ingress_started") {
+    await db.stream.update({
+      where: {
+        ingressId: event.ingressInfo?.ingressId,
+      },
+      data: {
+        isLive: true,
+      },
+    });
+  }
 
   if (event.event === "ingress_ended") {
     await db.stream.update({
@@ -25,4 +36,6 @@ export async function POST(req: Request) {
       },
     });
   }
+
+  return new Response("OK", { status: 200 });
 }
