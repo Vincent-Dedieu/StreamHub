@@ -35,6 +35,9 @@ export const getRecommanded = async () => {
       where: {
         AND: [{ id: { notIn: [userId, ...followedUserIds, ...blockingUserIds] } }],
       },
+      include: {
+        stream: true,
+      },
       orderBy: {
         createdAt: "desc",
       },
@@ -42,6 +45,9 @@ export const getRecommanded = async () => {
   } else {
     // If no user is logged in, retrieve all users
     users = await db.user.findMany({
+      include: {
+        stream: true,
+      },
       orderBy: {
         createdAt: "desc",
       },
