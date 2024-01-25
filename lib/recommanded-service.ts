@@ -36,7 +36,11 @@ export const getRecommanded = async () => {
         AND: [{ id: { notIn: [userId, ...followedUserIds, ...blockingUserIds] } }],
       },
       include: {
-        stream: true,
+        stream: {
+          select: {
+            isLive: true,
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",
@@ -46,7 +50,11 @@ export const getRecommanded = async () => {
     // If no user is logged in, retrieve all users
     users = await db.user.findMany({
       include: {
-        stream: true,
+        stream: {
+          select: {
+            isLive: true,
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",
