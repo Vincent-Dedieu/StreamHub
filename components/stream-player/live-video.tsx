@@ -18,10 +18,8 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
   const toggleFullscreen = () => {
     if (isFullscreen) {
       document.exitFullscreen();
-      setIsFullscreen(false);
     } else {
       wrapperRef.current?.requestFullscreen();
-      setIsFullscreen(!isFullscreen);
     }
   };
 
