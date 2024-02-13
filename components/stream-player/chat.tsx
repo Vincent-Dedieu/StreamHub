@@ -7,6 +7,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { ConnectionState } from "livekit-client";
 import { useChat, useConnectionState, useRemoteParticipant } from "@livekit/components-react";
 import { ChatForm } from "./chat-form";
+import { ChatList } from "./chat-list";
 
 interface ChatProps {
   viewerName: string;
@@ -64,6 +65,7 @@ export const Chat = ({
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
+          <ChatList messages={reversedMessages} isHidden={isHidden} />
           <ChatForm
             value={value}
             onSubmit={onSubmit}
