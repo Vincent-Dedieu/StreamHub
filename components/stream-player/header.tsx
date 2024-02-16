@@ -4,6 +4,7 @@ import { useParticipants, useRemoteParticipant } from "@livekit/components-react
 import { UserAvatar } from "../user-avatar";
 import { VerifiedMark } from "../verified-mark";
 import { UserIcon } from "lucide-react";
+import { Actions } from "./actions";
 
 interface HeaderProps {
   hostName: string;
@@ -21,7 +22,7 @@ export const Header = ({ hostName, hostIdentity, viewerIdentity, imageUrl, isFol
   const isLive = !!participant;
   const participantCount = participants.length - 1; // subtract 1 to exclude the host locally streaming
   const hostAsViewer = `host-${hostIdentity}`;
-  const isHost = viewerIdentity === hostIdentity;
+  const isHost = viewerIdentity === hostAsViewer;
 
   return (
     <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 items-start justify-between px-4">
@@ -45,6 +46,7 @@ export const Header = ({ hostName, hostIdentity, viewerIdentity, imageUrl, isFol
           )}
         </div>
       </div>
+      <Actions isFollowing={isFollowing} hostIdentity={hostIdentity} isHost={isHost} />
     </div>
   );
 };
