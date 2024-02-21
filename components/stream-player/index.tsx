@@ -10,6 +10,7 @@ import { Chat } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { Header } from "./header";
 import { InfoCard } from "./info-card";
+import { AboutCard } from "./about-card";
 
 interface StreamPlayerProps {
   user: User & { stream: Stream | null; _count: { followedBy: number } };
@@ -61,7 +62,7 @@ export const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) =
             hostIdentity={user.id}
             viewerIdentity={identity}
             bio={user.bio}
-            followedByCount={0}
+            followedByCount={user._count.followedBy}
           />
         </div>
         <div className={cn("col-span-1", collapsed && "hidden")}>
