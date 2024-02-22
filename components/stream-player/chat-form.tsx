@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChatInfo } from "./chat-info";
 
 interface ChatFormProps {

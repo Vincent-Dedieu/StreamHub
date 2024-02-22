@@ -45,7 +45,7 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
             placeholder="User bio..."
             onChange={(e) => setValue(e.target.value)}
             value={value}
-            disabled={false}
+            disabled={isPending}
           />
           <div className="flex justify-between">
             <DialogClose ref={closeRef}>
@@ -53,7 +53,7 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit" variant="primary" disabled={false}>
+            <Button type="submit" variant="primary" disabled={isPending}>
               Save
             </Button>
           </div>
