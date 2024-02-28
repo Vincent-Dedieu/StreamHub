@@ -15,6 +15,7 @@ interface ChatFormProps {
   isFollowersOnly: boolean;
   isFollowing: boolean;
   isDelayed: boolean;
+  isSending: boolean;
 }
 
 export const ChatForm = ({
@@ -25,6 +26,7 @@ export const ChatForm = ({
   isFollowersOnly,
   isDelayed,
   isFollowing,
+  isSending,
 }: ChatFormProps) => {
   const [isDelayBlocked, setIsDelayBlocked] = useState(false);
   const isFollowersOnlyAndNotFollowing = isFollowersOnly && !isFollowing;
@@ -55,12 +57,12 @@ export const ChatForm = ({
           className={cn("border-white/10", isFollowersOnly && "rounded-t-none border-t-0")}
           onChange={(e) => onChange(e.target.value)}
           value={value}
-          disabled={false}
+          disabled={isSending}
           placeholder="Send a message..."
         />
       </div>
       <div className="ml-auto">
-        <Button type="submit" variant="primary" size="sm" disabled={false}>
+        <Button type="submit" variant="primary" size="sm" disabled={isSending}>
           Chat
         </Button>
       </div>

@@ -38,7 +38,7 @@ export const Chat = ({
   const isHidden = !isChatEnabled || !isOnline;
 
   const [value, setValue] = useState("");
-  const { chatMessages: messages, send } = useChat();
+  const { chatMessages: messages, send, isSending } = useChat();
 
   useEffect(() => {
     if (matches) {
@@ -75,6 +75,7 @@ export const Chat = ({
             isFollowersOnly={isChatFollowersOnly}
             isDelayed={isChatDelayed}
             isFollowing={isFollowing}
+            isSending={isSending}
           />
         </>
       )}

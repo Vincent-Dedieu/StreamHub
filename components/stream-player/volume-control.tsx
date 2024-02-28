@@ -27,7 +27,7 @@ export const VolumeControl = ({ onToggle, onChange, value }: VolumeControlProps)
           <Icon className="w-6 h-6" />
         </button>
       </Hint>
-      <Slider className="w-32" value={[value]} onValueChange={handleChange} max={100} step={1} />
+      <Slider className="w-32 cursor-pointer" value={[value]} onValueChange={handleChange} max={100} step={1} />
     </div>
   );
 };

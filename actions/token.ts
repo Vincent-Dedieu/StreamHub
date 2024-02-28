@@ -39,6 +39,7 @@ export const createViewerToken = async (hostIdentity: string) => {
     room: host.id,
     roomJoin: true,
     canPublish: false,
+    canPublishData: true,
   });
 
   return await Promise.resolve(token.toJwt());
