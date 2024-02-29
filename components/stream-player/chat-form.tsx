@@ -54,7 +54,7 @@ export const ChatForm = ({
       <div className="w-full">
         <ChatInfo isDelayed={isDelayed} isFollowersOnly={isFollowersOnly} />
         <Input
-          className={cn("border-white/10", isFollowersOnly && "rounded-t-none border-t-0")}
+          className={cn("border-white/10", (isFollowersOnly || isDelayed) && "rounded-t-none border-t-0")}
           onChange={(e) => onChange(e.target.value)}
           value={value}
           disabled={isSending}

@@ -18,7 +18,7 @@ export const onBlock = async (id: string) => {
   try {
     blockedUser = await blockUser(id); // if the user is logged in, we block him with id
   } catch {
-    // if the user isn't logged in, then it's a guest so we have reconize him by self.id from getSelf()
+    // if the user isn't logged in, then it's a guest so we have recognize him by self.id from getSelf()
     blockedUser = await blockUser(self.id);
   }
 
