@@ -1,11 +1,18 @@
 import { Thumbnail } from "@/components/thumbnail";
 import { VerifiedMark } from "@/components/verified-mark";
 import { Stream, User } from "@prisma/client";
-import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 
 interface ResultCardProps {
-  data: Stream & { user: User };
+  data: {
+    thumbnailUrl: string | null;
+    isLive: boolean;
+    name: string;
+    user: {
+      imageUrl: string;
+      username: string;
+    };
+  };
 }
 
 export const ResultCard = ({ data }: ResultCardProps) => {
