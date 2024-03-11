@@ -1,6 +1,5 @@
 import { Thumbnail } from "@/components/thumbnail";
 import { VerifiedMark } from "@/components/verified-mark";
-import { Stream, User } from "@prisma/client";
 import Link from "next/link";
 
 interface ResultCardProps {
