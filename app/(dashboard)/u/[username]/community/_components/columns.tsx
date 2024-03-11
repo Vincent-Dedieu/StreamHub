@@ -1,27 +1,29 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
+export type BlockedUser = {
   id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
+  userId: string;
+  imageUrl: string;
+  username: string;
+  createdAt: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<BlockedUser>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "username",
+    header: "Username",
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "createdAt",
+    header: "Date blocked",
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
+    id: "action",
+    cell: () => <Button>Unblock</Button>,
   },
 ];
