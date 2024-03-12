@@ -14,8 +14,6 @@ const CommunityPage = async () => {
     createdAt: format(new Date(user.createdAt), "dd/MM/yyyy"),
   }));
 
-  console.log({ formattedData });
-
   return (
     <div className="p-6">
       <div className="mb-4">
