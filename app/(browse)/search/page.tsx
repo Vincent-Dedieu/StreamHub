@@ -6,7 +6,7 @@ interface SearchPageProps {
   searchParams: { q?: string };
 }
 
-export const SearchPage = ({ searchParams }: SearchPageProps) => {
+const SearchPage = ({ searchParams }: SearchPageProps) => {
   if (!searchParams.q) {
     redirect("/");
   }
