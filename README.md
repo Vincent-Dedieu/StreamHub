@@ -4,6 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with
 ## Getting Started
 
 ```bash
+npm i
 npm run dev
 ```
 
@@ -23,5 +24,6 @@ npx prisma db push
 
 - Tailwind + shadcn/ui
 - Clerk for authentication
-- LiveKit for streaming service
+- LiveKit for streaming service using OBS Studio
 - MongoDB Cloud + prisma
+- Stripe
